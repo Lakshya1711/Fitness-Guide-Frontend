@@ -53,13 +53,19 @@ const AuthPopup = () => {
                 <Option value="female">Female</Option>
                 <Option value="other">Other</Option>
               </Select>
+              <br />
+              <label htmlFor="">Height</label>
+              <div className="form_input_leftright">
+                <Input color="primary" size="lg" variant="outlined" type="number" placeholder="ft" />
+                <Input color="primary" size="lg" variant="outlined" type="number" placeholder="in" />
+              </div>
               <Button onClick={() => {
                 handleSignup
               }}>Signup</Button>
             </form>
             <p>Already have an account ? <button onClick={() => {
               setShowSignup(false)
-            }}>Login</button></p>
+            }}>SignUp</button></p>
           </div>
 
         </div>
