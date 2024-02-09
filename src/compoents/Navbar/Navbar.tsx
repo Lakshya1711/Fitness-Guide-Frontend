@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import AuthPopup from "../AuthPopup/AuthPopup";
 
+
 const Navbar = () => {
   const [isloggedin, setIsloggedin] = React.useState<boolean>(false);
 
@@ -30,7 +31,7 @@ const Navbar = () => {
           Login
         </button>
       )}
-      {showpopup && <AuthPopup />}
+      {showpopup && <AuthPopup setShowpopup={setShowpopup} />}
     </nav>
   );
 };
