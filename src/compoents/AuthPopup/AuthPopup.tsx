@@ -32,6 +32,13 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
               <Input
                 color="primary"
                 disabled={false}
+                placeholder="Name"
+                size="lg"
+                variant="soft"
+              />
+              <Input
+                color="primary"
+                disabled={false}
                 placeholder="Email"
                 size="lg"
                 variant="soft"
@@ -72,7 +79,7 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
             </form>
             <p>Already have an account ? <button onClick={() => {
               setShowSignup(false)
-            }}>SignUp</button></p>
+            }}>Login</button></p>
           </div>
 
         </div>
