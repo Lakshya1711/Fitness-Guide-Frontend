@@ -4,9 +4,12 @@ import './Report.css'
 import { LineChart } from '@mui/x-charts/LineChart'
 import { AiFillEdit } from 'react-icons/ai'
 import CalorieIntakePopup from '@/compoents/ReportFormPopup/CalorieIntake/CalorieIntakePopup'
+import { usePathname } from 'next/navigation'
 
 const Page = () => {
     const color = '#ffc20e';
+    const pathname = usePathname()
+    console.log(pathname)
     const chartsParams = {
         height: 300
     };
@@ -104,87 +107,19 @@ const Page = () => {
                     <p>Loading...</p>
                 )}
             </div>
-            <div className='s2'>
-                {dataS1 ? (
-                    <LineChart
-                        {...chartsParams}
-                        xAxis={[{
-                            id: 'Day',
-                            data: dataS1.xAxis.data,
-                            scaleType: dataS1.xAxis.scaleType,
-                            label: dataS1.xAxis.label,
-                            valueFormatter: (date: any) => {
-                                // Format date to display only the day number
-                                return date.getDate().toString().padStart(2, '0');
-                            }
-
-                        }]}
-                        series={[{
-                            data: dataS1.data,
-                            label: dataS1.title,
-                            color: dataS1.color
-                        }]}
-                    />
-                ) : (
-                    <p>Loading...</p>
-                )}
-            </div>
-            <div className='s3'>
-                {dataS1 ? (
-                    <LineChart
-                        {...chartsParams}
-                        xAxis={[{
-                            id: 'Day',
-                            data: dataS1.xAxis.data,
-                            scaleType: dataS1.xAxis.scaleType,
-                            label: dataS1.xAxis.label,
-                            valueFormatter: (date: any) => {
-                                // Format date to display only the day number
-                                return date.getDate().toString().padStart(2, '0');
-                            }
-
-                        }]}
-                        series={[{
-                            data: dataS1.data,
-                            label: dataS1.title,
-                            color: dataS1.color
-                        }]}
-                    />
-                ) : (
-                    <p>Loading...</p>
-                )}
-            </div>
-            <div className='s4'>
-                {dataS1 ? (
-                    <LineChart
-                        {...chartsParams}
-                        xAxis={[{
-                            id: 'Day',
-                            data: dataS1.xAxis.data,
-                            scaleType: dataS1.xAxis.scaleType,
-                            label: dataS1.xAxis.label,
-                            valueFormatter: (date: any) => {
-                                // Format date to display only the day number
-                                return date.getDate().toString().padStart(2, '0');
-                            }
-
-                        }]}
-                        series={[{
-                            data: dataS1.data,
-                            label: dataS1.title,
-                            color: dataS1.color
-                        }]}
-                    />
-                ) : (
-                    <p>Loading...</p>
-                )}
-            </div>
-            <button className='editibutton' onClick={() => setShowCalorieIntakePopup(true)}>
+            <button className='editbutton' onClick={() => {
+                if (pathname == '/report/Calorie%20Intake') {
+                    setShowCalorieIntakePopup(true)
+                }
+                else {
+                    //show popup for other reports
+                    alert('show popup for other reports')
+                }
+            }}>
                 <AiFillEdit />
             </button>
             {
                 showCalorieIntakePopup &&
-
                 <CalorieIntakePopup setShowCalorieIntakePopup={setShowCalorieIntakePopup} />
 
             }

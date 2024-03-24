@@ -1,51 +1,154 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import '../popup.css'
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import dayjs, { Dayjs } from 'dayjs'
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import { AiFillDelete, AiOutlineClose } from 'react-icons/ai'
+import { TimePicker } from '@mui/x-date-pickers/TimePicker';
+import dayjs, { Dayjs } from 'dayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { TimeClock } from '@mui/x-date-pickers/TimeClock';
-import { AiOutlineClose, AiFillDelete } from 'react-icons/ai';
-
+import { toast } from 'react-toastify';
+import { error } from 'console';
 interface CaloriIntakePopupProps {
   setShowCalorieIntakePopup: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIntakePopup }) => {
-  const color = "#ffc20e"
-  const [date, setDate] = useState<any>(new Date())
-  const selectedDay = (val: any) => {
-    console.log(val)
+  const color = '#ffc20e'
+
+  const [date, setDate] = useState<Dayjs>(dayjs());
+  const [time, setTime] = useState<Dayjs>(dayjs());
+  const [calorieIntake, setCalorieIntake] = useState<any>({
+    item: '',
+    date: dayjs().format('YYYY-MM-DD'),
+    quantity: '',
+    quantitytype: 'g'
+  })
+  const [items, setItems] = useState<any>([])
+
+  // const getDate = async () => {
+  //   let temp = [{
+  //     date: 'Tue Mar 12 2024 00:00:00 GMT+0530 (India Standard Time)',
+  //     name: 'Apple',
+  //     amount: 100,
+  //     unit: 'gms'
+  //   },
+  //   {
+  //     date: 'Tue Mar 12 2024 00:00:00 GMT+0530 (India Standard Time)',
+  //     name: 'Bananas',
+  //     amount: 100,
+  //     unit: 'gms'
+  //   },
+  //   {
+  //     date: 'Tue Mar 12 2024 00:00:00 GMT+0530 (India Standard Time)',
+  //     name: 'Apple',
+  //     amount: 100,
+  //     unit: 'gms'
+  //   }
+  // ]
+  // }
+
+  const saveCalorieIntake = async () => {
+    let tempdate = date.format('YYYY-MM-DD')
+    let temptime = time.format('HH:mm:ss')
+    let tempdatetime = tempdate + ' ' + temptime
+    let finaldatetime = new Date(tempdatetime)
+
+    console.log('Final Date Time:', finaldatetime);
+    console.log('Calorie Intake:', calorieIntake);
+
+    fetch('http://localhost:8000/calorintake/addcalorieintake', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        date: finaldatetime,
+        item: calorieIntake.item,
+        quantity: calorieIntake.quantity,
+        quantitytype: calorieIntake.quantitytype
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          toast.success('Calorie intake added Successfully')
+          getCalorieIntake()
+        }
+        else {
+          toast.error('Error in adding Calorie intake')
+          console.log(data)
+        }
+      })
+      .catch(err => {
+        toast.error('Error in adding Calorie intake')
+        console.log(err)
+      })
   }
-  const handleDateChange = (date: Date | null) => {
-    setDate(date);
-    console.log(date); // This will log the selected date
+  const getCalorieIntake = async () => { }
+  const deleteCalorieIntake = async (item: any) => { }
+
+  useEffect(() => {
+    getCalorieIntake()
+  }, [date])
+
+  const selectedDay = (newValue: Dayjs | null) => {
+    if (newValue !== null) {
+
+    }
   };
 
-  const [value, setValue] = useState<Dayjs | null>(dayjs('2024-02-09T20:30'))
+
+
+
   return (
     <div className='popupout'>
-
       <div className='popupbox'>
-        <button className='close' onClick={() => {
-          setShowCalorieIntakePopup(false)
-        }}>
+        <button className='close'
+          onClick={() => {
+            setShowCalorieIntakePopup(false)
+          }}>
           <AiOutlineClose />
         </button>
-        <DatePicker
-          value={date}
-          onChange={handleDateChange}
-          label="Select Date"
-        // color = {color}
-        />
-        <TextField id="outlined-basic" label="food item name" variant="outlined" color='warning' />
-        <TextField id="outlined-basic" label="food item amount (in gms)" variant="outlined" color='warning' />
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          <TimeClock value={value} onChange={(newValue) => setValue(newValue)} />
+          <DatePicker
+            label="Select Date"
+            value={date}
+            onChange={(newValue: any) => setDate(newValue)}
+          />
+
         </LocalizationProvider>
+        <TextField id='outlined-basic' label='Food item name'
+          variant='outlined' color='warning'
+          onChange={(e) => {
+            setCalorieIntake({ ...calorieIntake, item: e.target.value })
+          }}
+        />
+        <TextField id='outlined-basic' label='Food item amount(in gms)'
+          variant='outlined' color='warning' type='number'
+          onChange={(e) => {
+            setCalorieIntake({ ...calorieIntake, quantity: e.target.value })
+          }}
+        />
+
+        <div className='timebox'>
+          <LocalizationProvider dateAdapter={AdapterDayjs}>
+            <TimePicker
+              label="Time picker"
+              value={time}
+              onChange={(newValue: any) => setTime(newValue)}
+            />
+          </LocalizationProvider>
+        </div>
+
+        <Button variant='contained' color='warning'
+          onClick={saveCalorieIntake}>Save</Button>
       </div>
-    </div>
+
+
+    </div >
   )
 }
 
