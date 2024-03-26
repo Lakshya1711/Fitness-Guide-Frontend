@@ -87,8 +87,61 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
         console.log(err)
       })
   }
-  const getCalorieIntake = async () => { }
-  const deleteCalorieIntake = async (item: any) => { }
+  const getCalorieIntake = async () => {
+    setItems([])
+    fetch('http://localhost:8000/calorintake/getcalorieintakebydate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        date: date
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          console.log(data.data, 'Calorie intake data for date')
+          setItems(data.data)
+        }
+        else {
+          toast.error('Error in getting Calorie intake')
+        }
+      })
+      .catch(err => {
+        toast.error('Error in getting Calorie intake')
+        console.log(err)
+      })
+  }
+  const deleteCalorieIntake = async (item: any) => {
+    fetch('http://localhost:8000/calorintake/deletecalorieintake', {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({
+        item: item.item,
+        date: item.date
+      })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.ok) {
+          toast.success('Calorie intake item deleted successfully')
+          getCalorieIntake()
+        }
+        else {
+          toast.error('Error in deleting Calorie Intake')
+        }
+      })
+      .catch(err => {
+        toast.error('Error in Deleting Calorie Intake')
+        console.log(err)
+      })
+
+  }
 
   useEffect(() => {
     getCalorieIntake()
@@ -145,6 +198,25 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
 
         <Button variant='contained' color='warning'
           onClick={saveCalorieIntake}>Save</Button>
+
+        <div className='hrline'></div>
+        <div className='items'>
+          {
+            items.map((item: any) => {
+              return (
+                <div className='item'>
+                  <h3>{item.item}</h3>
+                  <h3>{item.quantity} {item.quantitytype}</h3>
+                  <button onClick={() => {
+                    deleteCalorieIntake(item)
+                  }}>
+                    <AiFillDelete />
+                  </button>
+                </div>
+              )
+            })
+          }
+        </div>
       </div>
 
 
