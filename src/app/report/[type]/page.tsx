@@ -17,71 +17,117 @@ const Page = () => {
     const [dataS1, setDataS1] = useState<any>(null);
 
     const getDataForS1 = async () => {
-        let temp = [
-            {
-                date: 'Thu Feb 8 2024 20:30:30 GMT+0530 (India Standard Time)',
-                value: 2000,
-                unit: 'kcal'
-            },
-            {
-                date: 'Wed Feb 7 2024 20:30:30 GMT+0530 (India Standard Time)',
-                value: 2500,
-                unit: 'kcal'
-            },
-            {
-                date: 'Tue Feb 6 2024 20:30:30 GMT+0530 (India Standard Time)',
-                value: 2700,
-                unit: 'kcal'
-            },
-            {
-                date: 'Mon Feb 5 2024 20:30:30 GMT+0530 (India Standard Time)',
-                value: 3000,
-                unit: 'kcal'
-            },
-            {
-                date: 'Sun Feb 4 2024 20:30:30 GMT+0530 (India Standard Time)',
-                value: 2000,
-                unit: 'kcal'
-            },
-            {
-                date: 'Sat Feb 3 2024 20:30:30 GMT+0530 (India Standard Time)',
-                value: 2300,
-                unit: 'kcal'
-            },
-            {
-                date: 'Fri Feb 2 2024 20:30:30 GMT+0530 (India Standard Time)',
-                value: 2500,
-                unit: 'kcal'
-            },
-            {
-                date: 'Thu Feb 1 2024 20:30:30 GMT+0530 (India Standard Time)',
-                value: 2700,
-                unit: 'kcal'
-            },
-        ];
+        if (pathname == '/report/Calorie%20Intake') {
+            fetch('http://localhost:8000/calorintake/getcalorieintakebylimit', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ limit: 10 })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.ok) {
+                        let temp = data.data.map((item: any) => {
+                            return {
+                                Date: item.date,
+                                value: item.calorieIntake,
+                                unit: 'Kcal'
+                            }
+                        })
+                        let dataForLineChart = temp.map((item: any) => {
+                            let val = JSON.stringify(item.value)
+                            return val
+                        });
+                        let dataForXAxis = temp.map((item: any) => {
+                            let val = new Date(item.date)
+                            return val
+                        });
+                    }
+                    else {
+                        setDataS1([])
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        else {
+            alert('get data for other reports')
+        }
+        //     let temp = [
+        //         {
+        //             date: 'Thu Feb 8 2024 20:30:30 GMT+0530 (India Standard Time)',
+        //             value: 2000,
+        //             unit: 'kcal'
+        //         },
+        //         {
+        //             date: 'Wed Feb 7 2024 20:30:30 GMT+0530 (India Standard Time)',
+        //             value: 2500,
+        //             unit: 'kcal'
+        //         },
+        //         {
+        //             date: 'Tue Feb 6 2024 20:30:30 GMT+0530 (India Standard Time)',
+        //             value: 2700,
+        //             unit: 'kcal'
+        //         },
+        //         {
+        //             date: 'Mon Feb 5 2024 20:30:30 GMT+0530 (India Standard Time)',
+        //             value: 3000,
+        //             unit: 'kcal'
+        //         },
+        //         {
+        //             date: 'Sun Feb 4 2024 20:30:30 GMT+0530 (India Standard Time)',
+        //             value: 2000,
+        //             unit: 'kcal'
+        //         },
+        //         {
+        //             date: 'Sat Feb 3 2024 20:30:30 GMT+0530 (India Standard Time)',
+        //             value: 2300,
+        //             unit: 'kcal'
+        //         },
+        //         {
+        //             date: 'Fri Feb 2 2024 20:30:30 GMT+0530 (India Standard Time)',
+        //             value: 2500,
+        //             unit: 'kcal'
+        //         },
+        //         {
+        //             date: 'Thu Feb 1 2024 20:30:30 GMT+0530 (India Standard Time)',
+        //             value: 2700,
+        //             unit: 'kcal'
+        //         },
+        //     ];
 
-        let dataForLineChart = temp.map(item => item.value);
-        let dataForXAxis = temp.map(item => new Date(item.date));
+        // let dataForLineChart = temp.map((item: any) => {
+        //     let val = JSON.stringify(item.value)
+        //     return val
+        // });
+        // let dataForXAxis = temp.map((item: any) => {
+        //     let val = new Date(item.date)
+        //     return val
+        // });
 
-        await setDataS1({
-            data: dataForLineChart,
-            title: '1 Day Calorie Intake',
-            color: color,
-            xAxis: {
-                data: dataForXAxis,
-                label: 'Last 10 Days',
-                scaleType: 'time'
-            }
-        });
-    };
+        //     console.log({
+        //         data: dataForLineChart,
+        //         title: '1 Day Calorie Intake',
+        //         color: color,
+        //         xAxis: {
+        //             data: dataForXAxis,
+        //             label: 'Last 10 Days',
+        //             scaleType: 'time'
+        //         }
+        //     });
+        // };
 
-    useEffect(() => {
-        getDataForS1();
-    }, []);
-
+        // useEffect(() => {
+        //     getDataForS1();
+        // }, []);
+    }
     const [showCalorieIntakePopup, setShowCalorieIntakePopup] = useState<boolean>(false)
     return (
         <div className='reportpage'>
+
             <div className='s1'>
                 {dataS1 ? (
                     <LineChart
@@ -101,12 +147,15 @@ const Page = () => {
                             data: dataS1.data,
                             label: dataS1.title,
                             color: dataS1.color
-                        }]}
+                        },
+                        ]}
+                        {...chartsParams}
                     />
                 ) : (
-                    <p>Loading...</p>
+                    <h3>No Data to Display</h3>
                 )}
             </div>
+
             <button className='editbutton' onClick={() => {
                 if (pathname == '/report/Calorie%20Intake') {
                     setShowCalorieIntakePopup(true)
@@ -123,7 +172,6 @@ const Page = () => {
                 <CalorieIntakePopup setShowCalorieIntakePopup={setShowCalorieIntakePopup} />
 
             }
-
         </div>
     );
 };
