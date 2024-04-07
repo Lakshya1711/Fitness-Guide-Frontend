@@ -3,8 +3,13 @@ import React, { useState, useEffect } from 'react'
 import './Report.css'
 import { LineChart } from '@mui/x-charts/LineChart'
 import { AiFillEdit } from 'react-icons/ai'
-import CalorieIntakePopup from '@/compoents/ReportFormPopup/CalorieIntake/CalorieIntakePopup'
+import CalorieIntakePopup from '@/compoents/ReportFormPopup/CalorieIntakePopup'
+import Sleeptrack from '@/compoents/ReportFormPopup/Sleeptrack'
+import Steptrack from '@/compoents/ReportFormPopup/Steptrack'
 import { usePathname } from 'next/navigation'
+import Watertrack from '@/compoents/ReportFormPopup/Watertrack'
+import Weighttrack from '@/compoents/ReportFormPopup/Weighttrack'
+
 
 const Page = () => {
     const color = '#ffc20e';
@@ -34,6 +39,187 @@ const Page = () => {
                                 Date: item.date,
                                 value: item.calorieIntake,
                                 unit: 'Kcal'
+                            }
+                        })
+                        let dataForLineChart = temp.map((item: any) => {
+                            let val = JSON.stringify(item.value)
+                            return val
+                        });
+                        let dataForXAxis = temp.map((item: any) => {
+                            let val = new Date(item.date)
+                            return val
+                        });
+                    }
+                    else {
+                        setDataS1([])
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        else if (pathname == '/report/Sleep') {
+            fetch('http://localhost:8000/sleeptrack/getsleepbylimit', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ limit: 10 })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    console.log
+                    if (data.ok) {
+                        let temp = data.data.map((item: any) => {
+                            return {
+                                Date: item.date,
+                                value: item.sleep,
+                                unit: 'Hrs'
+                            }
+                        })
+                        let dataForLineChart = temp.map((item: any) => {
+                            let val = JSON.stringify(item.value)
+                            return val
+                        });
+                        let dataForXAxis = temp.map((item: any) => {
+                            let val = new Date(item.date)
+                            return val
+                        });
+                    }
+                    else {
+                        setDataS1([])
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        else if (pathname == '/report/Steps') {
+            fetch('http://localhost:8000/steptrack/getstepsbylimit', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ limit: 10 })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.ok) {
+                        let temp = data.data.map((item: any) => {
+                            return {
+                                Date: item.date,
+                                value: item.steps,
+                                unit: 'fts'
+                            }
+                        })
+                        let dataForLineChart = temp.map((item: any) => {
+                            let val = JSON.stringify(item.value)
+                            return val
+                        });
+                        let dataForXAxis = temp.map((item: any) => {
+                            let val = new Date(item.date)
+                            return val
+                        });
+                    }
+                    else {
+                        setDataS1([])
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        else if (pathname == '/report/Water') {
+            fetch('http://localhost:8000/watertrack/getwaterbylimit', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ limit: 10 })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.ok) {
+                        let temp = data.data.map((item: any) => {
+                            return {
+                                Date: item.date,
+                                value: item.water,
+                                unit: 'ml'
+                            }
+                        })
+                        let dataForLineChart = temp.map((item: any) => {
+                            let val = JSON.stringify(item.value)
+                            return val
+                        });
+                        let dataForXAxis = temp.map((item: any) => {
+                            let val = new Date(item.date)
+                            return val
+                        });
+                    }
+                    else {
+                        setDataS1([])
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        else if (pathname == '/report/Workout') {
+            fetch('http://localhost:8000/workouttrack/getworkoutsbylimit', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ limit: 10 })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.ok) {
+                        let temp = data.data.map((item: any) => {
+                            return {
+                                Date: item.date,
+                                value: item.workouts,
+                                unit: 'fts'
+                            }
+                        })
+                        let dataForLineChart = temp.map((item: any) => {
+                            let val = JSON.stringify(item.value)
+                            return val
+                        });
+                        let dataForXAxis = temp.map((item: any) => {
+                            let val = new Date(item.date)
+                            return val
+                        });
+                    }
+                    else {
+                        setDataS1([])
+                    }
+                })
+                .catch(err => {
+                    console.log(err)
+                })
+        }
+        else if (pathname == '/report/Weight') {
+            fetch('http://localhost:8000/steptrack/getstepsbylimit', {
+                method: 'POST',
+                credentials: 'include',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ limit: 10 })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data.ok) {
+                        let temp = data.data.map((item: any) => {
+                            return {
+                                Date: item.date,
+                                value: item.weight,
+                                unit: 'fts'
                             }
                         })
                         let dataForLineChart = temp.map((item: any) => {
@@ -125,6 +311,11 @@ const Page = () => {
         // }, []);
     }
     const [showCalorieIntakePopup, setShowCalorieIntakePopup] = useState<boolean>(false)
+    const [showSleeptrack, setShowSleeptrack] = useState<boolean>(false)
+    const [showSteptracker, setShowSteptrack] = useState<boolean>(false)
+    const [showWatertrack, setShowWatertrack] = useState<boolean>(false)
+    // const [showWorkouttrack, setShowWorkouttrack] = useState<boolean>(false)
+    const [showWeighttrack, setShowWeighttrack] = useState<boolean>(false)
     return (
         <div className='reportpage'>
 
@@ -160,6 +351,21 @@ const Page = () => {
                 if (pathname == '/report/Calorie%20Intake') {
                     setShowCalorieIntakePopup(true)
                 }
+                else if (pathname == '/report/Sleep') {
+                    setShowSleeptrack(true)
+                }
+                else if (pathname == '/report/Steps') {
+                    setShowSleeptrack(true)
+                }
+                else if (pathname == '/report/Water') {
+                    setShowWatertrack(true)
+                }
+                // else if (pathname == '/report/Workout') {
+                //     setShowWorkouttrack(true)
+                // }
+                else if (pathname == '/report/Weight') {
+                    setShowWeighttrack(true)
+                }
                 else {
                     //show popup for other reports
                     alert('show popup for other reports')
@@ -170,7 +376,22 @@ const Page = () => {
             {
                 showCalorieIntakePopup &&
                 <CalorieIntakePopup setShowCalorieIntakePopup={setShowCalorieIntakePopup} />
-
+            }
+            {
+                showSleeptrack &&
+                < Sleeptrack setShowSleeptrack={setShowSleeptrack} />
+            }
+            {
+                showSteptracker &&
+                <Steptrack setShowSteptrack={setShowSteptrack} />
+            }
+            {
+                showWatertrack &&
+                <Watertrack setShowWatertrack={setShowWatertrack} />
+            }
+            {
+                showWeighttrack &&
+                <Weighttrack setShowWeighttrack={setShowWeighttrack} />
             }
         </div>
     );

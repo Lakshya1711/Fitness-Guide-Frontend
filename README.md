@@ -10,3 +10,10 @@ const getDataForS1 = async () =>
 if (pathname == '/report/Calorie%20Intake')
 
 for making different report we have to set pathname and there particular Return type.
+
+PAthname:
+
+/report/Steps
+/report/Water
+/report/Workout
+/report/Weight
