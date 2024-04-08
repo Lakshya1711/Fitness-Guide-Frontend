@@ -9,6 +9,7 @@ import Steptrack from '@/compoents/ReportFormPopup/Steptrack'
 import { usePathname } from 'next/navigation'
 import Watertrack from '@/compoents/ReportFormPopup/Watertrack'
 import Weighttrack from '@/compoents/ReportFormPopup/Weighttrack'
+import Workouttrack from '@/compoents/ReportFormPopup/Workouttrack'
 
 
 const Page = () => {
@@ -314,7 +315,7 @@ const Page = () => {
     const [showSleeptrack, setShowSleeptrack] = useState<boolean>(false)
     const [showSteptracker, setShowSteptrack] = useState<boolean>(false)
     const [showWatertrack, setShowWatertrack] = useState<boolean>(false)
-    // const [showWorkouttrack, setShowWorkouttrack] = useState<boolean>(false)
+    const [showWorkouttrack, setShowWorkouttrack] = useState<boolean>(false)
     const [showWeighttrack, setShowWeighttrack] = useState<boolean>(false)
     return (
         <div className='reportpage'>
@@ -355,14 +356,14 @@ const Page = () => {
                     setShowSleeptrack(true)
                 }
                 else if (pathname == '/report/Steps') {
-                    setShowSleeptrack(true)
+                    setShowSteptrack(true)
                 }
                 else if (pathname == '/report/Water') {
                     setShowWatertrack(true)
                 }
-                // else if (pathname == '/report/Workout') {
-                //     setShowWorkouttrack(true)
-                // }
+                else if (pathname == '/report/Workout') {
+                    setShowWorkouttrack(true)
+                }
                 else if (pathname == '/report/Weight') {
                     setShowWeighttrack(true)
                 }
@@ -392,6 +393,10 @@ const Page = () => {
             {
                 showWeighttrack &&
                 <Weighttrack setShowWeighttrack={setShowWeighttrack} />
+            }
+            {
+                showWorkouttrack &&
+                <Workouttrack setShowWorkouttrack={setShowWorkouttrack} />
             }
         </div>
     );

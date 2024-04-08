@@ -153,6 +153,15 @@ const Watertrack: React.FC<Watertrack> = ({ setShowWatertrack }) => {
                         setWatertrack({ ...watertrack, water: e.target.value })
                     }}
                 />
+                <div className='timebox'>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <TimePicker
+                            label="Time picker"
+                            value={time}
+                            onChange={(newValue: any) => setTime(newValue)}
+                        />
+                    </LocalizationProvider>
+                </div>
 
                 <Button variant='contained' color='warning'
                     onClick={saveWatertrack}>Save</Button>
@@ -163,8 +172,7 @@ const Watertrack: React.FC<Watertrack> = ({ setShowWatertrack }) => {
                         items.map((item: any) => {
                             return (
                                 <div className='item'>
-                                    <h3>{item.item}</h3>
-                                    <h3>{item.quantity} {item.quantitytype}</h3>
+                                    <h3>{item.water}</h3>
                                     <button onClick={() => {
                                         deleteSteptrack(item)
                                     }}>

@@ -169,7 +169,7 @@ const Weighttrack: React.FC<Weighttrack> = ({ setShowWeighttrack }) => {
                     />
 
                 </LocalizationProvider>
-                <TextField id='outlined-basic' label='Steps taken'
+                <TextField id='outlined-basic' label='Current Weight'
                     variant='outlined' color='warning'
                     onChange={(e) => {
                         setWeighttrack({ ...weighttrack, steps: e.target.value })
@@ -195,8 +195,7 @@ const Weighttrack: React.FC<Weighttrack> = ({ setShowWeighttrack }) => {
                         items.map((item: any) => {
                             return (
                                 <div className='item'>
-                                    <h3>{item.item}</h3>
-                                    <h3>{item.quantity} {item.quantitytype}</h3>
+                                    <h3>{item.weights}</h3>
                                     <button onClick={() => {
                                         deleteWeighttrack(item)
                                     }}>

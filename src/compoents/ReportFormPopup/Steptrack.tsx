@@ -26,28 +26,6 @@ const Steptrack: React.FC<SteptrackProps> = ({ setShowSteptrack }) => {
     })
     const [items, setItems] = useState<any>([])
 
-    // const getDate = async () => {
-    //   let temp = [{
-    //     date: 'Tue Mar 12 2024 00:00:00 GMT+0530 (India Standard Time)',
-    //     name: 'Apple',
-    //     amount: 100,
-    //     unit: 'gms'
-    //   },
-    //   {
-    //     date: 'Tue Mar 12 2024 00:00:00 GMT+0530 (India Standard Time)',
-    //     name: 'Bananas',
-    //     amount: 100,
-    //     unit: 'gms'
-    //   },
-    //   {
-    //     date: 'Tue Mar 12 2024 00:00:00 GMT+0530 (India Standard Time)',
-    //     name: 'Apple',
-    //     amount: 100,
-    //     unit: 'gms'
-    //   }
-    // ]
-    // }
-
     const saveSteptrack = async () => {
         let tempdate = date.format('YYYY-MM-DD')
         let temptime = time.format('HH:mm:ss')
@@ -195,8 +173,7 @@ const Steptrack: React.FC<SteptrackProps> = ({ setShowSteptrack }) => {
                         items.map((item: any) => {
                             return (
                                 <div className='item'>
-                                    <h3>{item.item}</h3>
-                                    <h3>{item.quantity} {item.quantitytype}</h3>
+                                    <h3>{item.steps}</h3>
                                     <button onClick={() => {
                                         deleteSteptrack(item)
                                     }}>
