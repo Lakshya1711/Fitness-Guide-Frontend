@@ -43,7 +43,7 @@ const Watertrack: React.FC<Watertrack> = ({ setShowWatertrack }) => {
             credentials: 'include',
             body: JSON.stringify({
                 date: finaldatetime,
-                water: watertrack.amountInMilliliters
+                water: watertrack.water
             })
         })
             .then(res => res.json())
@@ -152,6 +152,7 @@ const Watertrack: React.FC<Watertrack> = ({ setShowWatertrack }) => {
                     onChange={(e) => {
                         setWatertrack({ ...watertrack, water: e.target.value })
                     }}
+                    type='number'
                 />
                 <div className='timebox'>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
@@ -172,7 +173,8 @@ const Watertrack: React.FC<Watertrack> = ({ setShowWatertrack }) => {
                         items.map((item: any) => {
                             return (
                                 <div className='item'>
-                                    <h3>{item.water}</h3>
+                                    <h3> {new Date(item.date).toLocaleDateString('en-GB')}</h3>
+                                    <h3>{item.amountInMilliliters}</h3>
                                     <button onClick={() => {
                                         deleteSteptrack(item)
                                     }}>

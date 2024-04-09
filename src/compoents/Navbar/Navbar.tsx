@@ -34,6 +34,24 @@ const Navbar = () => {
     useEffect(() => {
         checklogin();
     }, [showpopup]);
+
+    const handleLogout = async () => {
+        try {
+            const response = await fetch(process.env.NEXT_PUBLIC_BACKEND_API + "/auth/logout", {
+                method: "POST",
+                credentials: "include",
+            });
+
+            if (response.ok) {
+                setIsloggedin(false); // Update state to reflect logout
+            } else {
+                // Handle logout failure
+                console.error("Logout failed");
+            }
+        } catch (error) {
+            console.error("Error occurred during logout:", error);
+        }
+    };
     return (
         <nav>
             <Image src={logo} alt="Logo" />
@@ -43,7 +61,7 @@ const Navbar = () => {
                 <IoIosBody />
             </Link>
             {isloggedin ? (
-                <button>Logout</button>
+                <button onClick={handleLogout}>Logout</button>
             ) : (
                 <button
                     onClick={() => {

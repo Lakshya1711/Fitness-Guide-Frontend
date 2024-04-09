@@ -28,7 +28,7 @@ const Workouttrack: React.FC<Workouttrack> = ({ setShowWorkouttrack }) => {
 
     const saveWorkouttrack = async () => {
         let tempdate = date.format('YYYY-MM-DD')
-        let temptime = time.format('HH:mm:ss')
+        let temptime = time.format('hh:mm:ss')
         let tempdatetime = tempdate + ' ' + temptime
         let finaldatetime = new Date(tempdatetime)
 
@@ -181,8 +181,8 @@ const Workouttrack: React.FC<Workouttrack> = ({ setShowWorkouttrack }) => {
                         items.map((item: any) => {
                             return (
                                 <div className='item'>
-                                    <h3>{item.item}</h3>
-                                    <h3>{item.quantity} {item.quantitytype}</h3>
+                                    <h3> {new Date(item.date).toLocaleDateString('en-GB')}</h3>
+                                    <h3>{item.exercise} </h3> <h3> {item.durationInMinutes}</h3>
                                     <button onClick={() => {
                                         deleteWorkouttrack(item)
                                     }}>

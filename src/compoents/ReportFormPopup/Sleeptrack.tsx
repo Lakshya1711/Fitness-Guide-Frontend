@@ -173,8 +173,8 @@ const Sleeptrack: React.FC<SleeptrackProps> = ({ setShowSleeptrack }) => {
                         items.map((item: any) => {
                             return (
                                 <div className='item'>
-                                    <h3>{item.item}</h3>
-                                    <h3>{item.quantity} {item.quantitytype}</h3>
+                                    <h3>  {new Date(item.date).toLocaleDateString('en-GB')} </h3>
+                                    <h3>{item.durationInHrs} </h3>
                                     <button onClick={() => {
                                         deleteSleeptrack(item)
                                     }}>

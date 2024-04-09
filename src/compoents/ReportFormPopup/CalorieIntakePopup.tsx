@@ -27,28 +27,6 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
   })
   const [items, setItems] = useState<any>([])
 
-  // const getDate = async () => {
-  //   let temp = [{
-  //     date: 'Tue Mar 12 2024 00:00:00 GMT+0530 (India Standard Time)',
-  //     name: 'Apple',
-  //     amount: 100,
-  //     unit: 'gms'
-  //   },
-  //   {
-  //     date: 'Tue Mar 12 2024 00:00:00 GMT+0530 (India Standard Time)',
-  //     name: 'Bananas',
-  //     amount: 100,
-  //     unit: 'gms'
-  //   },
-  //   {
-  //     date: 'Tue Mar 12 2024 00:00:00 GMT+0530 (India Standard Time)',
-  //     name: 'Apple',
-  //     amount: 100,
-  //     unit: 'gms'
-  //   }
-  // ]
-  // }
-
   const saveCalorieIntake = async () => {
     let tempdate = date.format('YYYY-MM-DD')
     let temptime = time.format('HH:mm:ss')
@@ -58,7 +36,7 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
     console.log('Final Date Time:', finaldatetime);
     console.log('Calorie Intake:', calorieIntake);
 
-    fetch('http://localhost:8000/calorintake/addcalorieintake', {
+    fetch('http://localhost:8000/calorieintake/addcalorieintake', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -72,14 +50,15 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
       })
     })
       .then(res => res.json())
-      .then(data => {
-        if (data.ok) {
+      .then(res => {
+        console.log("Data", res)
+        if (res.ok) {
           toast.success('Calorie intake added Successfully')
           getCalorieIntake()
         }
         else {
           toast.error('Error in adding Calorie intake')
-          console.log(data)
+          console.log(res)
         }
       })
       .catch(err => {
@@ -89,7 +68,7 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
   }
   const getCalorieIntake = async () => {
     setItems([])
-    fetch('http://localhost:8000/calorintake/getcalorieintakebydate', {
+    fetch('http://localhost:8000/calorieintake/getcalorieintakebydate', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -101,6 +80,7 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
     })
       .then(res => res.json())
       .then(data => {
+        console.log(data)
         if (data.ok) {
           console.log(data.data, 'Calorie intake data for date')
           setItems(data.data)
@@ -115,7 +95,7 @@ const CalorieIntakePopup: React.FC<CaloriIntakePopupProps> = ({ setShowCalorieIn
       })
   }
   const deleteCalorieIntake = async (item: any) => {
-    fetch('http://localhost:8000/calorintake/deletecalorieintake', {
+    fetch('http://localhost:8000/calorieintake/deletecalorieintake', {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',

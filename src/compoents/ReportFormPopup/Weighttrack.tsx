@@ -22,31 +22,11 @@ const Weighttrack: React.FC<Weighttrack> = ({ setShowWeighttrack }) => {
     const [weighttrack, setWeighttrack] = useState<any>({
 
         date: dayjs().format('YYYY-MM-DD'),
-        steps: ''
+        weight: ''
     })
     const [items, setItems] = useState<any>([])
 
-    // const getDate = async () => {
-    //   let temp = [{
-    //     date: 'Tue Mar 12 2024 00:00:00 GMT+0530 (India Standard Time)',
-    //     name: 'Apple',
-    //     amount: 100,
-    //     unit: 'gms'
-    //   },
-    //   {
-    //     date: 'Tue Mar 12 2024 00:00:00 GMT+0530 (India Standard Time)',
-    //     name: 'Bananas',
-    //     amount: 100,
-    //     unit: 'gms'
-    //   },
-    //   {
-    //     date: 'Tue Mar 12 2024 00:00:00 GMT+0530 (India Standard Time)',
-    //     name: 'Apple',
-    //     amount: 100,
-    //     unit: 'gms'
-    //   }
-    // ]
-    // }
+
 
     const saveWeighttrack = async () => {
         let tempdate = date.format('YYYY-MM-DD')
@@ -65,22 +45,22 @@ const Weighttrack: React.FC<Weighttrack> = ({ setShowWeighttrack }) => {
             credentials: 'include',
             body: JSON.stringify({
                 date: finaldatetime,
-                weights: weighttrack.weightInKg
+                weights: weighttrack.weight
             })
         })
             .then(res => res.json())
             .then(data => {
                 if (data.ok) {
-                    toast.success('Steps Count added Successfully')
+                    toast.success('weight added Successfully')
                     getWeighttrack()
                 }
                 else {
-                    toast.error('Error in adding Steps Count')
+                    toast.error('Error in adding weight')
                     console.log(data)
                 }
             })
             .catch(err => {
-                toast.error('Error in adding Steps Count')
+                toast.error('Error in adding weight')
                 console.log(err)
             })
     }
@@ -99,15 +79,15 @@ const Weighttrack: React.FC<Weighttrack> = ({ setShowWeighttrack }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.ok) {
-                    console.log(data.data, 'Steps Count data for date')
+                    console.log(data.data, 'weight data for date')
                     setItems(data.data)
                 }
                 else {
-                    toast.error('Error in getting Steps Count')
+                    toast.error('Error in getting weight')
                 }
             })
             .catch(err => {
-                toast.error('Error in getting Steps Count')
+                toast.error('Error in getting weight')
                 console.log(err)
             })
     }
@@ -125,15 +105,15 @@ const Weighttrack: React.FC<Weighttrack> = ({ setShowWeighttrack }) => {
             .then(res => res.json())
             .then(data => {
                 if (data.ok) {
-                    toast.success('Steps Count item deleted successfully')
+                    toast.success('weight deleted successfully')
                     getWeighttrack()
                 }
                 else {
-                    toast.error('Error in deleting Steps Count')
+                    toast.error('Error in deleting weight')
                 }
             })
             .catch(err => {
-                toast.error('Error in Deleting Steps Count')
+                toast.error('Error in Deleting weight')
                 console.log(err)
             })
 
@@ -172,8 +152,9 @@ const Weighttrack: React.FC<Weighttrack> = ({ setShowWeighttrack }) => {
                 <TextField id='outlined-basic' label='Current Weight'
                     variant='outlined' color='warning'
                     onChange={(e) => {
-                        setWeighttrack({ ...weighttrack, steps: e.target.value })
+                        setWeighttrack({ ...weighttrack, weight: e.target.value })
                     }}
+                    type='number'
                 />
 
                 <div className='timebox'>
@@ -195,7 +176,8 @@ const Weighttrack: React.FC<Weighttrack> = ({ setShowWeighttrack }) => {
                         items.map((item: any) => {
                             return (
                                 <div className='item'>
-                                    <h3>{item.weights}</h3>
+                                    <h3> {new Date(item.date).toLocaleDateString('en-GB')}</h3>
+                                    <h3>{item.weight}</h3>
                                     <button onClick={() => {
                                         deleteWeighttrack(item)
                                     }}>
