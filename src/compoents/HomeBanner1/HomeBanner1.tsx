@@ -55,7 +55,7 @@ const HomeBanner1 = () => {
         // console.log(temp);
 
         fetch("http://localhost:8000/report/getreport", {
-            method: "GET",
+            method: "POST",
             credentials: "include",
         })
             .then((res) => res.json())

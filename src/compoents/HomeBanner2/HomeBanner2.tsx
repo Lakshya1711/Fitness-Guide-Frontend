@@ -24,7 +24,7 @@ const HomeBanner2 = () => {
         type: "Abs",
         imageUrl:
           "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWJzJTIwd29ya291dHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
-        durationInMin: 90,
+        durationInMin: 40,
       },
       {
         type: "Shoulder",
@@ -36,7 +36,7 @@ const HomeBanner2 = () => {
         type: "Back",
         imageUrl:
           "https://images.unsplash.com/photo-1603287681836-b174ce5074c2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YmFjayUyMHdvcmtvdXR8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-        durationInMin: 70,
+        durationInMin: 60,
       },
       {
         type: "Biceps",
@@ -55,20 +55,20 @@ const HomeBanner2 = () => {
         type: "Legs",
         imageUrl:
           "https://images.unsplash.com/photo-1434608519344-49d77a699e1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGVnJTIwd29ya291dHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
-        durationInMin: 80,
+        durationInMin: 40,
       },
 
       {
         type: "Cardio",
         imageUrl:
           "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y2FyZGlvfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
-        durationInMin: 100,
+        durationInMin: 30,
       },
       {
         type: "Forearms",
         imageUrl:
           "https://images.unsplash.com/photo-1591940742878-13aba4b7a34e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zm9yZWFybXN8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
-        durationInMin: 110,
+        durationInMin: 30,
       },
     ];
     setWorkouts(data);
@@ -125,15 +125,17 @@ const HomeBanner2 = () => {
         }}
         modules={[Pagination]}
         className="mySwiper"
+
       >
         {workouts &&
           workouts.map((item, index) => {
             return (
-              <SwiperSlide key={index}>
+              <SwiperSlide key={index} style={{ display: "flex" }}>
                 <div
                   className="swiper-slide"
                   style={{
                     backgroundImage: `url(${item.imageUrl})`,
+                    flexDirection: "column"
                   }}
                   onClick={() => {
                     window.location.href = `/workout/${item.type}`;
