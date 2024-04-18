@@ -54,6 +54,7 @@ const About = () => {
             </section>
             <section className="Contact">
                 <h2>Contact Details</h2>
+                <p>Name: Lakshya Srivastava</p>
                 <p>Email: Lucky17sh@gmail.com</p>
                 <p>Phone: 9532633199</p>
             </section>

@@ -7,8 +7,9 @@
   color: black;
 }
 
-h2 {
+.container h2 {
   text-align: center;
+  color: chocolate;
 }
 
 p {
