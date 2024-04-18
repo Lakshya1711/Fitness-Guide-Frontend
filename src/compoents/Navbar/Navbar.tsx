@@ -57,9 +57,9 @@ const Navbar = () => {
             <Image src={logo} alt="Logo" />
             <Link href="/">Home</Link>
             <Link href="/about">About</Link>
-            <Link href="/profile">
+            {/* <Link href="/profile">
                 <IoIosBody />
-            </Link>
+            </Link> */}
             {isloggedin ? (
                 <button onClick={handleLogout}>Logout</button>
             ) : (
