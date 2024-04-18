@@ -28,7 +28,7 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/1/7/5/5/2/17552.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "The flat bench press is a popular strength training exercise that primarily targets the muscles of the chest, shoulders, and triceps.",
         },
@@ -37,7 +37,7 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/1/0/3/9/8/10398.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "The incline bench press is a variation of the traditional bench press that targets the upper part of the chest, shoulders, and triceps. The main difference lies in the angle of the bench, which is set to an incline.",
         },
@@ -46,9 +46,18 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/6/5/2/3/6523.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "This exercise involves performing the bench press on a decline bench, where the upper body is positioned at a lower angle compared to the legs.",
+        },
+        {
+          exercise: "Wrist Full Push-up",
+          videoUrl: "https://gymvisual.com/img/p/3/0/0/4/9/30049.gif",
+          sets: 3,
+          reps: 10,
+          rest: 5,
+          description:
+            "The wrist full push- up is a standard push - up variation that emphasizes wrist strength and stability.Perform a push - up with your hands positioned directly under your shoulders and your wrists fully extended, bearing your body weight.This exercise enhances wrist flexibility and strengthens the muscles of the arms, chest, and shoulders.",
         },
       ],
     }
@@ -63,7 +72,7 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/2/0/9/5/9/20959.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "Lie on your back, knees bent, feet off the floor. Contract abs, lifting hips off the ground while bringing knees towards chest. Lower legs back down without touching the floor. Repeat for desired reps, engaging lower abs throughout.",
         },
@@ -72,7 +81,7 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/2/1/8/6/0/21860.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "Begin in a side plank position with forearm on the ground, elbow directly below shoulder. Stack feet or stagger for stability. Lift hips until body forms a straight line from head to heels. Engage core and hold for desired time. Repeat on opposite side.",
         },
@@ -81,14 +90,14 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/2/2/8/8/7/22887.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "Lie on your back with legs straight. Keeping your lower back pressed into the floor, lift legs up until they're perpendicular to the floor. Lower them back down with control, stopping before they touch the ground. Repeat for desired reps, engaging core throughout.",
         },
       ],
     }
     const Shoulder = {
-      type: "shoulder",
+      type: "Shoulder",
       imageUrl:
         "https://images.unsplash.com/photo-1532029837206-abbe2b7620e3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80",
       durationInMin: 90,
@@ -98,7 +107,7 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/2/1/6/5/9/21659.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "Shoulder circles: Stand tall, arms relaxed. Slowly roll shoulders forward in circular motion, squeezing shoulder blades together at top. Reverse direction after desired reps. Maintain control and breathe steadily.",
         },
@@ -107,7 +116,7 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/2/0/3/1/2/20312.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "Hold a dumbbell in each hand, stand tall, and step to the side with one leg while keeping the other straight. Lower your body by bending the knee of the side you stepped to, ensuring your back remains straight. Push back to the starting position and repeat on the other side.",
         },
@@ -116,7 +125,7 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/2/0/9/5/4/20954.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "Hold dumbbells in each hand, palms facing forward. Stand with feet shoulder-width apart. Keeping elbows close to your sides, curl the weights towards your shoulders, exhaling. Lower the weights back down slowly, inhaling. Repeat for desired reps. Keep core engaged and avoid swinging.",
         },
@@ -133,7 +142,7 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/2/1/9/4/4/21944.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "To perform a barbell back wide shrug: Hold a barbell with an overhand grip wider than shoulder-width apart. Stand tall with feet hip-width apart. Elevate shoulders towards ears, squeezing at the top. Lower back down. Maintain a straight back throughout.",
         },
@@ -142,7 +151,7 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/2/0/9/5/7/20957.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "Hold dumbbells at sides, step back into lunge position. Lower until both knees form 90-degree angles. Simultaneously row dumbbells towards hips. Return to standing, bringing dumbbells to sides. Repeat on alternate leg.",
         },
@@ -151,7 +160,7 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/2/0/8/2/5/20825.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "Lie facedown on a back extension bench, keeping hips and feet secured. Cross arms over chest or behind head. Lift upper body until parallel with the floor, then lower down. Avoid hyperextension.",
         },
@@ -168,7 +177,7 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/2/0/3/0/1/20301.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "Stand with feet shoulder-width apart, holding a barbell with an underhand grip, hands slightly wider than shoulders. Keep elbows close to your body, curl the barbell towards your shoulders while exhaling. Pause briefly, then lower back down to starting position while inhaling. Repeat for desired reps.",
         },
@@ -177,7 +186,7 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/2/0/3/0/7/20307.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "Hold a dumbbell vertically close to your chest with both hands. Stand with feet shoulder-width apart, toes slightly turned out. Perform a squat, keeping your chest up and knees aligned with toes. As you rise, perform a biceps curl. Lower and repeat.",
         },
@@ -186,12 +195,118 @@ const page = ({ params }: PageProps) => {
           videoUrl: "https://gymvisual.com/img/p/1/9/8/1/1/19811.gif",
           sets: 3,
           reps: 10,
-          rest: 60,
+          rest: 5,
           description:
             "Sit on an incline bench, back straight. Hold dumbbells, arms fully extended. Curl the weights toward your shoulders, keeping elbows close to your body. Lower the dumbbells with control. Repeat for desired reps, ensuring full range of motion.",
         },
       ],
     }
+    const Triceps = {
+      type: "Triceps",
+      imageUrl:
+        "https://images.unsplash.com/photo-1530822847156-5df684ec5ee1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dHJpY2Vwc3xlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      durationInMin: 60,
+      exercises: [
+        {
+          exercise: "Dumbbell Seated Triceps Extension",
+          videoUrl: "https://gymvisual.com/img/p/3/3/7/2/4/33724.gif",
+          sets: 3,
+          reps: 10,
+          rest: 5,
+          description:
+            "The dumbbell seated triceps extension involves sitting on a bench, holding a dumbbell overhead with both hands, and lowering it behind your head by bending your elbows. Extend your arms back up. Aim for 8-12 reps, focusing on proper form. Engage your core and avoid using excessively heavy weights to prevent injury.",
+        },
+        {
+          exercise: "Dumbbell Seated Single Arm Overhead Triceps Extension",
+          videoUrl: "https://gymvisual.com/img/p/2/7/4/4/7/27447.gif",
+          sets: 3,
+          reps: 10,
+          rest: 5,
+          description:
+            "The Dumbbell Seated Single Arm Overhead Triceps Extension targets triceps strength and stability.Sit on a bench, holding a dumbbell overhead with one hand.Lower the dumbbell behind your head, keeping your upper arm still, then extend your arm upward.Alternate arms for balanced development and core engagement for stability.",
+        },
+        {
+          exercise: "Band Triceps Kickback",
+          videoUrl: "https://gymvisual.com/img/p/2/1/5/3/9/21539.gif",
+          sets: 3,
+          reps: 10,
+          rest: 5,
+          description:
+            "Band triceps kickbacks are a resistance exercise targeting the triceps. Standing with feet shoulder-width apart, hold a resistance band handle in each hand, arms bent. Extend your arms backward, squeezing the triceps, then return to the starting position. This exercise helps build triceps strength and definition using elastic resistance.",
+        },
+      ],
+    }
+    const Legs = {
+      type: "Legs",
+      imageUrl:
+        "https://images.unsplash.com/photo-1434608519344-49d77a699e1d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bGVnJTIwd29ya291dHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+      durationInMin: 40,
+      exercises: [
+        {
+          exercise: "Kettlebell Calf Raise and Front Squat",
+          videoUrl: "https://gymvisual.com/img/p/2/6/2/4/5/26245.gif",
+          sets: 3,
+          reps: 10,
+          rest: 5,
+          description:
+            "The kettlebell calf raise involves standing with a kettlebell in hand, rising onto the balls of your feet, then lowering back down, targeting calf muscles. In a kettlebell front squat, hold a kettlebell at chest level, squat down with proper form, then return to standing, engaging core and leg muscles.",
+        },
+        {
+          exercise: "Elevated Two Legs Hip Thrust ",
+          videoUrl: "https://gymvisual.com/img/p/3/2/6/3/3/32633.gif",
+          sets: 3,
+          reps: 10,
+          rest: 5,
+          description:
+            "The elevated two legs hip thrust is a glute-strengthening exercise. Start by lying on your back with feet elevated on a bench. Lift hips until body forms a straight line from shoulders to knees. Squeeze glutes at the top, then lower hips back down. Repeat for desired reps.",
+        },
+        {
+          exercise: "Bodyweight Lying Legs Curl",
+          videoUrl: "https://gymvisual.com/img/p/2/7/6/5/2/27652.gif",
+          sets: 3,
+          reps: 10,
+          rest: 5,
+          description:
+            "The bodyweight lying leg curl is a simple yet effective hamstring exercise. Lie on your back, raise your hips, and flex your knees, pulling your heels toward your glutes. Engage your hamstrings throughout the movement. Lower your hips to return to the starting position. It strengthens and tones the hamstrings using only bodyweight resistance.",
+        },
+      ],
+    }
+    const Cardio = {
+      type: "Cardio",
+      imageUrl:
+        "https://images.unsplash.com/photo-1538805060514-97d9cc17730c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OXx8Y2FyZGlvfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=60",
+      durationInMin: 30,
+      exercises: [
+        {
+          exercise: "Jack Burpee",
+          videoUrl: "https://gymvisual.com/img/p/3/3/1/3/6/33136.gif",
+          sets: 3,
+          reps: 10,
+          rest: 5,
+          description:
+            "The Jack Burpee is a dynamic exercise combining the traditional burpee with a jumping jack. Start in a standing position, perform a burpee by squatting, kicking your legs back into a plank, returning to squat, then jumping up with arms overhead. Immediately transition into a jumping jack. Repeat for cardio and full-body conditioning.",
+        },
+        {
+          exercise: "High knee run",
+          videoUrl: "https://gymvisual.com/img/p/2/3/7/1/1/23711.gif",
+          sets: 3,
+          reps: 10,
+          rest: 5,
+          description:
+            "High knee run is a dynamic cardio exercise where you jog in place while lifting your knees as high as possible with each step. Engaging core muscles and promoting cardiovascular endurance, it's effective for warming up, increasing heart rate, and enhancing lower body strength. It also improves coordination and agility.",
+        },
+        {
+          exercise: "Star Jump",
+          videoUrl: "https://gymvisual.com/img/p/5/5/2/1/5521.gif",
+          sets: 3,
+          reps: 10,
+          rest: 5,
+          description:
+            "Sit on an incline bench, back straight. Hold dumbbells, arms fully extended. Curl the weights toward your shoulders, keeping elbows close to your body. Lower the dumbbells with control. Repeat for desired reps, ensuring full range of motion.",
+        },
+      ],
+    }
+
     switch (type) {
       case "Chest":
         setWorkout(Chest)
@@ -212,6 +327,20 @@ const page = ({ params }: PageProps) => {
       case "Biceps":
         setWorkout(Biceps)
         break
+
+      case "Triceps":
+        setWorkout(Triceps)
+        break
+
+      case "Legs":
+        setWorkout(Legs)
+        break
+
+      case "Cardio":
+        setWorkout(Cardio)
+        break
+
+
     }
 
     // fetch('http://localhost:8000/workoutplans/workouts/' + workoutid, {
@@ -260,6 +389,7 @@ const page = ({ params }: PageProps) => {
                     <span>
                       {item.sets} sets X {item.reps} reps
                     </span>
+                    <p>Rest: {item.rest} mins</p>
                     <p>{item.description}</p>
                   </div>
                 </div>
