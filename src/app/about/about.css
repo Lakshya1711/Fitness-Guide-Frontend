@@ -10,6 +10,7 @@
 .container h2 {
   text-align: center;
   color: chocolate;
+  margin-bottom: 30px;
 }
 
 p {
@@ -22,7 +23,12 @@ p {
 
 .developer {
   display: flex;
-  margin-bottom: 20px;
+  margin-top: 40px;
+}
+
+.Details {
+  display: flex;
+  margin-top: 20px;
 }
 
 .developer strong {
@@ -42,14 +48,4 @@ p {
 
 .developer div:last-child {
   flex: 1;
-}
-
-.Contact {
-  margin-bottom: 50px;
-  color: aliceblue;
-}
-.Contact p {
-  margin-bottom: 10px;
-  margin-left: 50px;
-  color: aliceblue;
 }

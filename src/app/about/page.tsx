@@ -18,45 +18,42 @@ const About = () => {
             </section>
             <section className="section">
                 <h2>Developer Details</h2>
-                <div className="developer">
-                    <div>
-                        <img src="/Lakshya.jpg" alt="Developer 1" />
+
+                <div className='Details'>
+                    <div className="developer">
+                        <div>
+                            <img src="/Lakshya.jpg" alt="Developer 1" />
+                        </div>
+                        <div>
+                            <p><strong>Lakshya Srivastava</strong></p>
+                            <p>201B147</p>
+                            <p>Email: 201B147@juetguna.com</p>
+                            <p>Phone: 9532633199</p>
+                        </div>
                     </div>
-                    <div>
-                        <p><strong>Lakshya Srivastava</strong></p>
-                        <p>201B147</p>
-                        <p>Email: 201B147@juetguna.com</p>
-                        <p>Phone: 9532633199</p>
+                    <div className="developer">
+                        <div>
+                            <img src="/Mohini.jpeg" alt="Developer 2" />
+                        </div>
+                        <div>
+                            <p><strong>Mohini Dhakad</strong></p>
+                            <p>201B157</p>
+                            <p>Email: 201B157@juetguna.com</p>
+                            <p>Phone: 7828480378</p>
+                        </div>
+                    </div>
+                    <div className="developer">
+                        <div>
+                            <img src="/Prince.jpeg" alt="Developer 3" />
+                        </div>
+                        <div>
+                            <p><strong>Prince Kumar</strong></p>
+                            <p>201B198</p>
+                            <p>Email: 201B198@juetguna.com</p>
+                            <p>Phone: 9262838497</p>
+                        </div>
                     </div>
                 </div>
-                <div className="developer">
-                    <div>
-                        <img src="/Mohini.jpeg" alt="Developer 2" />
-                    </div>
-                    <div>
-                        <p><strong>Mohini Dhakad</strong></p>
-                        <p>201B157</p>
-                        <p>Email: 201B157@juetguna.com</p>
-                        <p>Phone: 7828480378</p>
-                    </div>
-                </div>
-                <div className="developer">
-                    <div>
-                        <img src="/Prince.jpeg" alt="Developer 3" />
-                    </div>
-                    <div>
-                        <p><strong>Prince Kumar</strong></p>
-                        <p>201B198</p>
-                        <p>Email: 201B198@juetguna.com</p>
-                        <p>Phone: 9262838497</p>
-                    </div>
-                </div>
-            </section>
-            <section className="Contact">
-                <h2>Contact Details</h2>
-                <p>Name: Lakshya Srivastava</p>
-                <p>Email: Lucky17sh@gmail.com</p>
-                <p>Phone: 9532633199</p>
             </section>
         </div>
     );
