@@ -6,6 +6,7 @@ import Input from "@mui/joy/Input";
 import Select from "@mui/joy/Select";
 import Option from "@mui/joy/Option";
 import { AiFillDelete, AiOutlineClose } from "react-icons/ai";
+import { FaEye, FaRegEyeSlash } from "react-icons/fa";
 import dayjs from "dayjs";
 
 //
@@ -212,20 +213,29 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                                         email: e.target.value,
                                     });
                                 }}
-                            />
-                            <Input
-                                color="warning"
-                                placeholder="password"
-                                size="lg"
-                                variant="solid"
-                                type="password"
-                                onChange={(e) => {
-                                    setSignupFormData({
-                                        ...signupformData,
-                                        password: e.target.value,
-                                    });
-                                }}
-                            />
+                            /> <div style={{ display: "flex", width: "100%", justifyContent: "start", alignItems: "center", gap: "5px" }}>
+                                <Input
+                                    color="warning"
+                                    placeholder="Password"
+                                    size="lg"
+                                    variant="solid"
+                                    type={`${showPass ? "text" : "password"}`}
+                                    onChange={(e) => {
+                                        setSignupFormData({
+                                            ...signupformData,
+                                            password: e.target.value,
+                                        });
+                                    }}
+                                    style={{ width: "100%" }}
+                                /> {showPass ? <FaRegEyeSlash onClick={(e) => {
+                                    e.preventDefault();
+                                    setshowPass(!showPass);
+                                }} style={{ background: "" }} /> : <FaEye onClick={(e) => {
+                                    e.preventDefault();
+                                    setshowPass(!showPass);
+                                }} />}
+                            </div>
+
 
                             <Input
                                 color="warning"
@@ -355,9 +365,10 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                     <div className="right">
                         <h1>Login to become a freak</h1>
                         <form action="">
+
                             <Input
                                 color="warning"
-                                placeholder="email"
+                                placeholder="Email"
                                 size="lg"
                                 variant="solid"
                                 onChange={(e) => {
@@ -368,19 +379,28 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                                 }}
                             />
 
-                            <Input
-                                color="warning"
-                                placeholder="password"
-                                size="lg"
-                                variant="solid"
-                                type={`${showPass ? "text" : "password"}`}
-                                onChange={(e) => {
-                                    setLoginFormData({
-                                        ...loginformData,
-                                        password: e.target.value,
-                                    });
-                                }}
-                            />
+                            <div style={{ display: "flex", width: "100%", justifyContent: "start", alignItems: "center", gap: "5px" }}>
+                                <Input
+                                    color="warning"
+                                    placeholder="Password"
+                                    size="lg"
+                                    variant="solid"
+                                    type={`${showPass ? "text" : "password"}`}
+                                    onChange={(e) => {
+                                        setLoginFormData({
+                                            ...loginformData,
+                                            password: e.target.value,
+                                        });
+                                    }}
+                                    style={{ width: "100%" }}
+                                /> {showPass ? <FaRegEyeSlash onClick={(e) => {
+                                    e.preventDefault();
+                                    setshowPass(!showPass);
+                                }} style={{ background: "" }} /> : <FaEye onClick={(e) => {
+                                    e.preventDefault();
+                                    setshowPass(!showPass);
+                                }} />}
+                            </div>
                             <button
                                 onClick={(e) => {
                                     e.preventDefault();
@@ -390,14 +410,7 @@ const AuthPopup: React.FC<AuthPopupProps> = ({ setShowpopup }) => {
                                 Login
                             </button>
                         </form>
-                        <button
-                            onClick={(e) => {
-                                e.preventDefault();
-                                setshowPass(!showPass);
-                            }}
-                        >
-                            Show
-                        </button>
+
                         <p>
                             Don't have an account?{" "}
                             <button
